@@ -1,0 +1,427 @@
+@charset "UTF-8";
+body {
+  font-family: "游ゴシック体", "Yu Gothic", yugothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  max-width: 100%;
+  height: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.clear {
+  clear: both;
+}
+
+h1 {
+  font-weight: bold;
+  color: #2b2828;
+}
+
+/*===============
+header
+================*/
+header {
+  background-color: #3F51B5;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
+header .header-wrapper {
+  width: 100%;
+  display: flex;
+  height: 80px;
+  line-height: 80px;
+}
+
+header .header-wrapper .left {
+  width: 100%;
+  font-size: 20px;
+}
+
+header .header-wrapper .right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .header-wrapper .right .contents {
+  display: flex;
+}
+
+header .header-wrapper .right .contents .content {
+  padding-left: 20px;
+}
+
+header .header-wrapper .right .contents .content :hover {
+  color: aqua;
+}
+
+/*==============
+top
+==============*/
+.top {
+  padding-top: 80px;
+  background: transparent url(../img/clear.jpg) no-repeat top center/cover;
+  overflow: hidden;
+  backdrop-filter: blur(100px);
+  height: 600px;
+}
+
+.top .top-wrapper {
+  text-align: center;
+  padding-top: 200px;
+}
+
+.top .top-wrapper h1 {
+  color: #333;
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.top .top-wrapper p {
+  font-size: 20px;
+}
+
+/*=============
+main
+=============*/
+@media (max-width: 760px) {
+  main {
+    height: auto;
+    background-color: #EFEFEF;
+  }
+  main .main-wrapper {
+    padding-top: 50px;
+    width: 100%;
+    height: auto;
+  }
+  main .main-wrapper .main-left {
+    width: 100%;
+  }
+  main .main-wrapper .main-left img {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+  main .main-wrapper .main-right {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+  }
+  main .main-wrapper .main-right h2 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  main .main-wrapper .main-right p {
+    line-height: 2em;
+  }
+}
+
+@media (min-width: 760px) {
+  main {
+    height: auto;
+    background-color: #EFEFEF;
+  }
+  main .main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    width: 100%;
+    height: 400px;
+  }
+  main .main-wrapper .main-left {
+    width: 45%;
+    height: 60px;
+  }
+  main .main-wrapper .main-left img {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+  main .main-wrapper .main-right {
+    padding-top: 30px;
+    width: 45%;
+  }
+  main .main-wrapper .main-right h2 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  main .main-wrapper .main-right p {
+    line-height: 2em;
+  }
+}
+
+/*============
+main2
+============*/
+@media (max-width: 725px) {
+  .main2 {
+    width: 100%;
+    height: auto;
+  }
+  .main2 .greet {
+    padding-top: 80px;
+  }
+  .main2 .main2-wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .main2 .main2-wrap .main2-wrapper .table {
+    background-color: #98d5f8;
+    border-collapse: collapse;
+  }
+  .main2 .main2-wrap .main2-wrapper .table th, .main2 .main2-wrap .main2-wrapper .table td {
+    padding: 1px;
+    border: 1px solid black;
+  }
+  .main2 .main2-wrap .main2-wrapper .table .resCon {
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+  .main2 .main2-wrap .main3-wrapper .table {
+    background-color: #98d5f8;
+    border-collapse: collapse;
+  }
+  .main2 .main2-wrap .main3-wrapper .table th, .main2 .main2-wrap .main3-wrapper .table td {
+    padding: 10px;
+    border: 1px solid black;
+  }
+}
+
+@media (min-width: 725px) {
+  .main2 {
+    width: 100%;
+    height: auto;
+  }
+  .main2 .greet {
+    padding-top: 80px;
+  }
+  .main2 .main2-wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .main2 .main2-wrap .main2-wrapper .table {
+    background-color: #98d5f8;
+    border-collapse: collapse;
+  }
+  .main2 .main2-wrap .main2-wrapper .table th, .main2 .main2-wrap .main2-wrapper .table td {
+    padding: 10px;
+    border: 1px solid black;
+  }
+  .main2 .main2-wrap .main3-wrapper .table {
+    background-color: #98d5f8;
+    border-collapse: collapse;
+  }
+  .main2 .main2-wrap .main3-wrapper .table th, .main2 .main2-wrap .main3-wrapper .table td {
+    padding: 10px;
+    border: 1px solid black;
+  }
+}
+
+/*===============
+Contact
+===============*/
+.contact {
+  height: auto;
+  background-color: #EFEFEF;
+}
+
+.contact .contact-head {
+  text-align: center;
+}
+
+.contact .contact-head .contact-top {
+  margin-top: 120px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.contact .contact-head .color {
+  width: 60px;
+  height: 4px;
+  background-color: #3F51B5;
+  display: inline-block;
+}
+
+.contact .contact-wrapper {
+  background-color: #FFFFFF;
+  margin: 0 auto;
+}
+
+.contact .contact-wrapper .media {
+  display: flex;
+}
+
+.contact .contact-wrapper .form input[type="text"] {
+  width: 100%;
+  height: 40px;
+  margin: 20px 0;
+}
+
+.contact .contact-wrapper .form textarea {
+  width: 100%;
+}
+
+.contact .contact-wrapper .form .must {
+  background-color: #E8191e;
+  color: #fff;
+  border-radius: 4px;
+  margin-left: 10px;
+  padding: 0 5px;
+}
+
+.contact .contact-wrapper .form .contact-name-content {
+  margin: 20px 0;
+}
+
+.contact .contact-wrapper .btn {
+  float: right;
+  margin-bottom: 120px;
+}
+
+.contact .contact-wrapper .btn input[type="submit"] {
+  background-color: #3F51B5;
+  color: #fff;
+  border: 1px solid #3F51B5;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+.contact .contact-wrapper .btn input[type="submit"]:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/*=============
+login
+=============*/
+@media (max-width: 650px) {
+  .login {
+    background-color: #fff;
+    padding-top: 100px;
+  }
+  .login .login-wrapper {
+    text-align: center;
+    height: 400px;
+  }
+  .login .login-wrapper .con {
+    padding-bottom: 50px;
+  }
+  .login .login-wrapper .con h2 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .login .login-wrapper .btn {
+    width: 100%;
+  }
+  .login .login-wrapper .btn .login-btn {
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 19px 30px;
+    color: #fff;
+    border-radius: 12px;
+    border: #3F51B5;
+    background-color: #3F51B5;
+  }
+  .login .login-wrapper .btn .new-btn {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 19px 30px;
+    color: #fff;
+    border-radius: 12px;
+    border: #3F51B5;
+    background-color: #3F51B5;
+  }
+}
+
+@media (min-width: 650px) {
+  .login {
+    background-color: #fff;
+    padding-top: 100px;
+  }
+  .login .login-wrapper {
+    text-align: center;
+    height: 400px;
+  }
+  .login .login-wrapper .con {
+    padding-bottom: 50px;
+  }
+  .login .login-wrapper .con h2 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .login .login-wrapper .btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .login .login-wrapper .btn .login-btn {
+    font-size: 18px;
+    font-weight: bold;
+    width: 200px;
+    cursor: pointer;
+    padding: 19px 30px;
+    color: #fff;
+    border-radius: 12px;
+    border: #3F51B5;
+    background-color: #3F51B5;
+  }
+  .login .login-wrapper .btn .new-btn {
+    font-size: 18px;
+    font-weight: bold;
+    width: 200px;
+    cursor: pointer;
+    padding: 19px 30px;
+    color: #fff;
+    border-radius: 12px;
+    border: #3F51B5;
+    background-color: #3F51B5;
+  }
+}
+
+/*===============
+footer
+===============*/
+footer {
+  background-color: #333;
+  height: 300px;
+}
+
+/*===============
+responsive
+===============*/
