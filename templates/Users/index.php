@@ -23,8 +23,8 @@
                 </div>
                 <div class="right">
                     <ul class="contents">
-                        <li class="content"><a href="./login.php">ログイン</a></li>
-                        <li class="content"><a href="./log/new.php">新規登録</a></li>
+                        <li class="content"><?= $this->Html->link('ログイン', '/users/loginForm');?></li>
+                        <li class="content"><?= $this->Html->link('新規登録', '/users/newForm');?></li>
                     </ul>
                 </div>
                 

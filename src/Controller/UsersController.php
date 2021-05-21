@@ -25,8 +25,13 @@ class UsersController extends AppController
        
     }
 
-    public function login() {
+    public function loginForm() {
         $this->viewBuilder()->setLayout('top');
+    }
+
+    public function newForm() {
+        $this->viewBuilder()->setLayout('top');
+        
     }
 
     /**

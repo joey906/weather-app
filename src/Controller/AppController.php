@@ -44,6 +44,30 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
+        date_default_timezone_set('Asia/Tokyo');
+        $today = date("Y-m-d");
+        $day = date("Y-m");
+        $Y = date("Y");
+        $m = date("m");
+        $d = date("d");
+        $tomorrow =  date('Y-m-d', strtotime('+1 day'));
+        $nextTwoDay = date('Y-m-d', strtotime('+2 day'));
+        $a = date('Y-m-d', strtotime('+3 day'));
+        $time = date('H:i:s');
+
+        $urel1 = 'https://www.javadrive.jp/google-maps-javascript/data/data/pref.json';
+        $json1 = file_get_contents($urel1);
+        $arr1 = json_decode($json1, true);
+
+
+
+        for ($i = 0; $i < count($arr1['marker']); $i++) {
+            unset($arr1['marker'][$i]['url']);
+            unset($arr1['marker'][$i]['addr']);
+        }
+
+        $this->set(compact('arr1'));
+
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
