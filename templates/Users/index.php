@@ -23,7 +23,7 @@
                 </div>
                 <div class="right">
                     <ul class="contents">
-                        <li class="content"><a href="./log/login.php">ログイン</a></li>
+                        <li class="content"><a href="./login.php">ログイン</a></li>
                         <li class="content"><a href="./log/new.php">新規登録</a></li>
                     </ul>
                 </div>
