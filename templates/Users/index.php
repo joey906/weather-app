@@ -29,9 +29,15 @@
                 </div>
                 
             </div>
-            
+            <div class="flash">
+            <?php if (isset($msg) !== false):?>
+                <?= $msg?>
+            <?php endif;?>
+            </div>
         </div>
     </header>
+
+ 
 
     <div class="top">
         <div class="container">
@@ -71,10 +77,10 @@
                 </div>
                 <div class="btn">
                     <div class="login-btn">
-                        <a href="./log/login.php"><p>ログイン</p></a>
+                    <?= $this->Html->link('ログイン', '/users/loginForm');?>
                     </div>
                     <div class="new-btn">
-                        <a href="./log/new.php"><p>新規登録</p></a>
+                    <?= $this->Html->link('新規登録', '/users/newForm');?>
                     </div>
                 </div>
             </div>

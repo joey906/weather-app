@@ -66,7 +66,12 @@ class AppController extends Controller
             unset($arr1['marker'][$i]['addr']);
         }
 
+        $this->set(compact('today'));
+        $this->set(compact('tomorrow'));
+        $this->set(compact('nextTwoDay'));
+        $this->set(compact('a'));
         $this->set(compact('arr1'));
+       
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.

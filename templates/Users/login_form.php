@@ -16,12 +16,19 @@ echo $this->Html->css('form');
         <div class="form-wrapper">
         <h2>ログイン</h2>
         <div class="wrap">
-        
-            <form action="../top.php" method="post">
+        <?php
+        if (isset($msg) !== false) {
+            echo $msg;
+        }
+        ?>
+        <form action="/users/login" method="post">
+                <input
+                type="hidden" name="_csrfToken" autocomplete="off"
+                value="<?= $this->request->getAttribute('csrfToken') ?>">
                 <div class="form-wrap"><input type="text" name="name" placeholder="名前"></div>
                 <div class="form-wrap"><input type="password" name="pass" placeholder="パスワード"></div>
                 <div class="form-wrap point"><input type="submit" value="submit"></div>
-            </form>
+        </form>
         </div>
         </div>  
     </div>
