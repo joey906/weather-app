@@ -52,7 +52,7 @@ class UsersController extends AppController
             } else {
                 $msg = "ログインできませんでした。";
                 $this->set(compact('msg'));
-                $this->render('/users/login_form');
+                
             }
         }
     }
