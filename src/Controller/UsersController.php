@@ -28,7 +28,8 @@ class UsersController extends AppController
        
     }
 
-    public function loginForm() {
+    public function loginForm($msg = null) {
+        $this->set(compact('msg'));
         $this->viewBuilder()->setLayout('top');
     }
 
@@ -38,13 +39,16 @@ class UsersController extends AppController
             $pass = $_POST['pass'];
         }
         
-        $users = $this->Users->find('all');
-        foreach ($users as $key => $val) {
-            if ($val['name'] == $name && $val['pass'] == $pass) {
+        $query = $this->Users->find('all');
+        $data = $query->toArray();
+
+        for ($i = 0; $i < count($data); $i++) {
+            $data2 = $data[$i]->toArray();
+            if (in_array($name, $data2)  && in_array($pass, $data2)) {
                 $userName = $name;
                 $userPass = $pass;
-                $userEmail = $val['email'];
-                $userPref = $val['pref'];
+                $userEmail = $data2['email'];
+                $userPref = $data2['pref'];
                 $this->set(compact('userName'));
                 $this->set(compact('userPass'));
                 $this->set(compact('userEmail'));
@@ -52,9 +56,11 @@ class UsersController extends AppController
             } else {
                 $msg = "ログインできませんでした。";
                 $this->set(compact('msg'));
-                
+                $this->render('/users/login_form');
             }
         }
+        
+        $this->set(compact('data'));
     }
 
     public function main($userName = null, $userPass = null, $userEmail = null, $userPref = null) {
