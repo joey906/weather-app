@@ -18,8 +18,8 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
-    public function index($msg = null)
-    {
+    public function index($msg = null) 
+    { 
         $this->viewBuilder()->setLayout('top');
         $users = $this->paginate($this->Users);
 
@@ -58,8 +58,6 @@ class UsersController extends AppController
         }
         $msg = "ユーザー名かパスワードが違います。";
         $this->set(compact('msg'));
-        
-        $this->set(compact('data2'));
     }
 
     public function main($userName = null, $userPass = null, $userEmail = null, $userPref = null) {
@@ -159,28 +157,66 @@ class UsersController extends AppController
     
     public function add()
     {
-        
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $pass = $_POST['pass'];
-        $pref = $_POST['prefecture'];
-
-        $user = $this->Users->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            $user->name = $name;
-            $user->email = $email;
-            $user->pass = $pass;
-            $user->pref = $pref;
-            if ($this->Users->save($user)) {
-                $msg = '始めるにはログインしてください。';
-
-                $this->set(compact('msg'));
-                return $this->redirect(['action' => 'login', $name, $pass]);
-            }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        $this->viewBuilder()->setLayout('top');
+        $infor = [];
+        if (isset($_POST['name'])) {
+            $name = $_POST['name'];
+            $infor[] = $name;
         }
-        $this->set(compact('user'));
+        if (isset($_POST['email']) !== false) {
+            $email = $_POST['email'];
+            $infor[] = $email;
+        }
+        if (isset($_POST['pass']) !== false) {
+            $pass = $_POST['pass'];
+            $infor[] = $pass;
+        }
+        if (isset($_POST['prefecture']) !== false) {
+            $pref = $_POST['prefecture'];
+            $infor[] = $pref;
+        }
+
+        $tmp = array_filter($infor, 'strlen');
+        $newInfo = array_values($tmp);
+        $num = count($newInfo);
+        $query = $this->Users->find('all')->select(['name']);
+        $data = $query->toArray();
+        for ($i = 0; $i < count($data); $i++) {
+            $data2[] = $data[$i]['name'];
+        }
+        if ($num == 4) {
+            if (in_array($name, $data2, true)) {
+                $msg = "違う名前にしてください。";
+                $this->set(compact('msg'));
+                
+            } else {
+                $user = $this->Users->newEmptyEntity();
+                if ($this->request->is('post')) {
+                    $user = $this->Users->patchEntity($user, $this->request->getData());
+                    $user->name = $name;
+                    $user->email = $email;
+                    $user->pass = $pass;
+                    $user->pref = $pref;
+                    if ($this->Users->save($user)) {
+                        $msg = '始めるにはログインしてください。';
+
+                        $this->set(compact('msg'));
+                        return $this->redirect(['action' => 'login', $name, $pass]);
+                    }
+                    $this->Flash->error(__('The user could not be saved. Please, try again.'));
+    
+                    $this->set(compact('user'));
+        
+                }
+            }
+            
+        } else {
+            
+            $msg = "全ての項目を埋めてください。";
+            $this->set(compact('data2'));
+            $this->set(compact('num'));
+            $this->set(compact('msg'));
+        }
     }
 
     /**

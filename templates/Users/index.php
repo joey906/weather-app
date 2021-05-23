@@ -77,7 +77,7 @@
                 </div>
                 <div class="btn">
                     <div class="login-btn">
-                    <?= $this->Html->link('ログイン', '/users/loginForm');?>
+                    <?= $this->Html->link('ログイン', '/users/loginf');?>
                     </div>
                     <div class="new-btn">
                     <?= $this->Html->link('新規登録', '/users/newForm');?>

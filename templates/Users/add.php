@@ -1,30 +1,46 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
- */
-?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <title>WeatherApp</title>
+</head>
+<body>
+    <section class="login">
+    <div class="container">
+        <div class="form-wrapper">
+        <h2>新規登録</h2>
+        <div class="wrap">
+            <form action="/users/add" method="post">
+            <?php 
+            if (isset($msg) !== false) {
+                echo $msg;
+            }
+            ?>
+            <input
+                type="hidden" name="_csrfToken" autocomplete="off"
+                value="<?= $this->request->getAttribute('csrfToken') ?>">
+                <div class="form-wrap"><input type="text" name="name" placeholder="名前"></div>
+                <div class="form-wrap"><input type="password" name="pass" placeholder="パスワード"></div>
+                <div class="form-wrap"><input type="email" name="email" placeholder="email"></div>
+                <div class="form-wrap">
+                <select name="prefecture">
+                    <?php for ($i = 0; $i <count($arr1['marker']); $i++):?>
+                    <option name="pref" value=<?= $arr1['marker'][$i]['pref']?>><?= $arr1['marker'][$i]['pref']?></option>
+                    <?php endfor;?>
+                </select>
+                </div>
+                
+                <div class="form-wrap"><input type="submit" value="submit"></div>
+            </form>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Add User') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('pass');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('pref');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
         </div>
+        
     </div>
-</div>
+    </section>
+    
+</body>
+</html>
