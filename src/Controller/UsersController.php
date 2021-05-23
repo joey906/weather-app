@@ -28,12 +28,13 @@ class UsersController extends AppController
        
     }
 
-    public function loginForm($msg = null) {
+    public function loginf($msg = null) {
         $this->set(compact('msg'));
         $this->viewBuilder()->setLayout('top');
     }
 
     public function login($name = null, $pass = null) {
+        $this->viewBuilder()->setLayout('top');
         if (isset($name) !== true) {
             $name = $_POST['name'];
             $pass = $_POST['pass'];
@@ -44,7 +45,7 @@ class UsersController extends AppController
 
         for ($i = 0; $i < count($data); $i++) {
             $data2 = $data[$i]->toArray();
-            if (in_array($name, $data2)  && in_array($pass, $data2)) {
+            if (in_array($name, $data2) !== false  && in_array($pass, $data2) !== false) {
                 $userName = $name;
                 $userPass = $pass;
                 $userEmail = $data2['email'];
@@ -53,14 +54,12 @@ class UsersController extends AppController
                 $this->set(compact('userPass'));
                 $this->set(compact('userEmail'));
                 $this->redirect(['action' => 'main', $userName, $userPass, $userEmail, $userPref]);
-            } else {
-                $msg = "ログインできませんでした。";
-                $this->set(compact('msg'));
-                $this->render('/users/login_form');
-            }
+            } 
         }
+        $msg = "ユーザー名かパスワードが違います。";
+        $this->set(compact('msg'));
         
-        $this->set(compact('data'));
+        $this->set(compact('data2'));
     }
 
     public function main($userName = null, $userPass = null, $userEmail = null, $userPref = null) {
