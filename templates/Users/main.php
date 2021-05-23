@@ -1,5 +1,8 @@
 <?php
+
+
 echo $this->Html->css('style');
+
 for ($i = 0; $i < count($todayWeather); $i++) {
     $times[] = substr($todayWeather[$i]['dt_txt'], -8);
 }
